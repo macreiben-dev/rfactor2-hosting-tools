@@ -8,14 +8,14 @@ This guide is based on:
 
 To do so, you need a license of the rFactor 2 game plus the DLCs you wish to add to the server.
 
-## Installing the dedicated server
+# Installing the dedicated server
 
-### Pre requisite
+## Pre requisite
 
 - A **directory** on the target computer with **read/write access**
 - The target computer has **access to internet**.
 
-### Installation scenario
+## Installation scenario
 
 - Create directory on the target computer
 - Copy the script [install-new-dedicated-server](./installation-scripts/install-new-dedicated-server.ps1)
@@ -56,15 +56,15 @@ In order to have tracks and car on the dedicated server, you need to download th
   - You land on an error page, but the url is *sharedfiles/filedetails/?id=123456789*
   - The **id parameter** is the one to use with the scripts
 
-## Allow DLCs on your server
+# Allow DLCs on your server
 
-### On the dedicated server computer
+## On the dedicated server computer
 
 - On the **dedicated server computer launch the server once**
 - Grab the **ServerKeys.bin** file
 - Send it **to your gaming PC** with rFactor 2 installed
 
-### On the gaming computer with rF2 installed
+## On the gaming computer with rF2 installed
 
 - Copy the *ServerKeys.bin* file to the **UserData** folder of your **rFactor2 game installation**
 - **Launch the game** and get to the main menu
@@ -73,27 +73,43 @@ In order to have tracks and car on the dedicated server, you need to download th
 - Grab **ServerUnlock.bin**
 - Send it to the dedicated server computer
 
-### On the dedicated server computer
+## On the dedicated server computer
 
-- Copy it to the dedicated server UserData folder - replacing the existing one
+- Copy **ServerUnlock.bin** to the dedicated server UserData folder - **replacing the existing one**.
 
-### How to check keys are ok ?
+## How to check keys are ok ?
 
 - Launch mod manager using the generated shortcut
-- OK: title should have keys loaded
+- OK: **title** should have "**keys loaded**"
 
-## Create serie on the dedicated server
+# Make DLCs available to the dedicated server
 
-!!! Work in progress here  !!!
+SteamCMD has downloaded the items from the workshop, but they are not installed in the dedicated server yet.
 
-### Open MAS2 utility
+## Copy the DLCs to the dedicated server
 
-#### First time setup
+- Copy [copy-dlc-to-packages.ps1](./installation-scripts/copy-dlc-to-packages.ps1) to the dedicated server computer
+- Set SteamCMDFolder and ServerInstallationDirectory
+- Launch the script
 
-- Click on the 4th icon on the toolbar "Set package directory"
-- In the game installation folder select the package folder
+## Install the DLCs on the dedicated server
 
-#### Create the package
+- Launch mod manager, and ensure you see "keys loaded" in the title
+- Select the DLCs you want to install
+- Click install
+
+The workshop item are downloaded as rfcmp file in the steamCMD content folder. The script recursively copy them to the Packages folder of the dedicated server installation.
+
+# Create a serie on the dedicated server
+
+## Open MAS2 utility
+
+### First time setup
+
+- On the **toolbar**, click on the **4th icon from the left**, "Set package directory"
+- Select the **dedicated server Packages folder**
+
+### Create the package
 
 - Click on the 6th icon on the toolbar to create a package
 - Click on "Create New Mod Package"
@@ -107,13 +123,3 @@ In order to have tracks and car on the dedicated server, you need to download th
 - Click package
 - Click install
 - Click done
-
-### Checking that package works
-
-- Start the game
-- Go to single player
-- Click on "Select series"
-  - You should see you package name here
-
-## Creating a serie with paid content on dedicated server
-
