@@ -1,12 +1,15 @@
 param([Parameter(Mandatory)] [string] $SteamCMDFolder, 
   [string[]] $WorkshopItems,
   [string] $ItemsIdFilePath,
-  [bool] $Diagnose = $false)
+  [bool] $Diagnose = $false,
+  [bool] $Force = $false)
 
 Write-Output "====== DownloadItem script ======"
 Write-Output "Given parameter SteamCmdPath:         $SteamCMDFolder"
 Write-Output "Given parameter WorkshopItems:        $WorkshopItems"
 Write-Output "Given parameter ItemsIdFilePath:      $ItemsIdFilePath"
+Write-Output "Given parameter Force:                $Force"
+Write-Output "Given parameter Diagnose:             $Diagnose"
 
 $originalLocation = Get-Location 
 
@@ -36,8 +39,21 @@ foreach ($item in $items) {
 
   Write-Output ">>> Downloading item [$item]" | Out-Host
 
-  if ($Diagnose -ne $true) {
-    ./steamcmd.exe +login anonymous +workshop_download_item 365960 $item +quit
+  $workshop_item_in_local_cmd = "steamapps\workshop\content\365960\$item"
+    
+  $is_workshop_item_in_local_cmd = Test-Path $workshop_item_in_local_cmd
+
+  Write-Output "Computed value workshop_item_in_local_cmd:         $workshop_item_in_local_cmd"
+  Write-Output "Computed value is_workshop_item_in_local_cmd:      $is_workshop_item_in_local_cmd"
+
+  if ($is_workshop_item_in_local_cmd -eq $false -or $Force) {
+
+    if ($Diagnose -eq $false) {
+      ./steamcmd.exe +login anonymous +workshop_download_item 365960 $item +quit
+    }
+  }
+  else {
+    Write-Output "Item [$item] already downloaded. Use -Force to replace."
   }
 }
 

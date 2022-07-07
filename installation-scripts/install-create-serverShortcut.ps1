@@ -4,6 +4,7 @@ param(
   [Parameter(Mandatory)] [string] $ShortcutSuffix,
   [string] $ShortcutDestinationPath = ".")
 
+Write-Output "====== CreateShortcutScript ======"
 Write-Output "Using parameter ServerInstallPath :                 $ServerInstallPath"
 Write-Output "Using parameter ShortcutDestinationPath :           $ShortcutDestinationPath"
 Write-Output "Using parameter ShortcutSuffix :                    $ShortcutSuffix"
@@ -77,10 +78,10 @@ Write-Output "Using target_server_shortcut_full_path:               $target_serv
 Write-Output "Using target_server_executable_full_path:             $target_server_executable_full_path"
 Write-Output "Using target_server_install_dir:                      $target_server_install_dir"
 
-$Shortcut = $WshShell.CreateShortcut($target_server_shortcut_full_path)
-$Shortcut.TargetPath = $target_server_executable_full_path
-$Shortcut.WorkingDirectory = $target_server_install_dir
-$Shortcut.save()
+$target_server_shortcut = $WshShell.CreateShortcut($target_server_shortcut_full_path)
+$target_server_shortcut.TargetPath = $target_server_executable_full_path
+$target_server_shortcut.WorkingDirectory = $target_server_install_dir
+$target_server_shortcut.save()
 
 Write-Output ">>> Server shortcut created."
 
@@ -90,9 +91,11 @@ Write-Output "Using target_modManager_shortcut_full_path:           $target_modM
 Write-Output "Using target_modManager_executable_full_path:         $target_modManager_executable_full_path"
 Write-Output "Using target_server_install_dir:                      $target_server_install_dir"
 
-$Shortcut2 = $WshShell.CreateShortcut($target_modManager_shortcut_full_path)
-$Shortcut2.TargetPath = $target_modManager_executable_full_path
-$Shortcut2.WorkingDirectory = $target_server_install_dir
-$Shortcut2.save()
+$target_server_modManager_shortcut = $WshShell.CreateShortcut($target_modManager_shortcut_full_path)
+$target_server_modManager_shortcut.TargetPath = $target_modManager_executable_full_path
+$target_server_modManager_shortcut.WorkingDirectory = $target_server_install_dir
+$target_server_modManager_shortcut.save()
 
 Write-Output ">>> ModManager shortcut created."
+
+Write-Output "====== CreateShortcutScript ====== DONE"
