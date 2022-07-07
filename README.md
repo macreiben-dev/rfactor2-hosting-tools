@@ -1,11 +1,31 @@
 # rfactor2-hosting-tools
-A repository with a bunch of tools to ease Rf2 server creation.
 
-## Documentation on how to create paid content
+A repository with a bunch of tools and resources to ease Rf2 server usage.
 
-This guide is based on [rFactor 2 Quick Guide: Creating Custom RaceEvents](https://steamcommunity.com/sharedfiles/filedetails/?id=554544322)
+## How to create paid content serie for dedicated server
 
-On a computer with rfactor 2 game installed.
+This guide is based on:
+- [rFactor 2 Quick Guide: Creating Custom RaceEvents](https://steamcommunity.com/sharedfiles/filedetails/?id=554544322)
+- [rFactor2 Dedicated Hosting (on AWS for free)](https://github.com/afloesch/rfactor2-server-setup)
+
+To do so, you need a license of the rFactor 2 game plus the DLCs you wish to add to the server.
+
+### Install the dedicated server
+
+#### Pre requisite
+
+- A **directory** on the target computer with **read/write access**
+- The target computer has **access to internet**.
+
+#### Installation scenario
+
+- Create directory on the target computer
+- Copy the script [install-new-dedicated-server](./installation-scripts/install-new-dedicated-server.ps1)
+  - Set the Rf2InstallationDirectory parameter to set the dedicated server installation path
+- Run the script
+
+The steamcmd archive is downloaded to the current directory. Then the steamcmd command is invoked to download rFactor2 dedicated server.
+
 
 ### Open MAS2 utility
 
@@ -36,28 +56,5 @@ On a computer with rfactor 2 game installed.
 - Click on "Select series"
   - You should see you package name here
 
-## Mod installation
+## Creating a serie with paid content on dedicated server
 
-### On a pc with RF2 game installed
-
-- Launch the server 
-- Select the package you created
-- Go all the way to the point where the server is running.
-- Go to steamapps\common\rFactor 2\UserData
-- Grab ServerKeys.bin file
-- Launch the game in single player
-- Close the game
-- Go to steamapps\common\rFactor 2\UserData
-- Grab ServerUnlock.bin
-- Go to steamapps\common\rFactor 2\Packages
-- Grab the rfmod file related to your package
-
-### On a PC with rf2 dedicated server installed
-
-- Copy ServerKeys.bin and ServerUnlock.bin to dedicated server UserData folder
-- Copy all elements used by your mas package to installed folder
-
-- Create a shortuct to your mod manager with the working dir as the game installation folder
-  - Example C:\SteamLibrary\steamapps\common\rFactor 2\Bin64
-  - other wise the mod manager won't be able to load your installed mods/tracks.
-- Open mod manager using the created shortcut
