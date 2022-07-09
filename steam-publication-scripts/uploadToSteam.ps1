@@ -1,1 +1,1 @@
-steamcmd.exe +login macreiben XXXX +workshop_build_item C:\Users\micro\OneDrive\Desktop\ComposingRfcmp\OutSteam\metadata.vdf
+steamcmd.exe +login LOGIN_HERE PASSWORD_HERE +workshop_build_item C:\Users\micro\OneDrive\Desktop\ComposingRfcmp\OutSteam\metadata.vdf +quit
