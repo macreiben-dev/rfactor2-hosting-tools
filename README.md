@@ -150,3 +150,15 @@ Path have to be set in an absolute way to work. The OutSteam folder contains a c
 - Copy [uploadToSteam.ps1](./steam-publication-scripts/uploadToSteam.ps1) to the CURRENTFOLDER_ABSOLUTE_PATH
 - Replace the login and password parameters
 - Run the script
+
+## Post upload tasks
+
+Once the upload is done, the vdf file publishedfileid is updated to the file id of your item.
+
+This id is the one the item url :
+
+```
+https://steamcommunity.com/sharedfiles/filedetails/?id=123456789
+```
+
+The VDF file has to be kept for the next update.
