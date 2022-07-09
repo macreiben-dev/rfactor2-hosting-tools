@@ -123,3 +123,30 @@ The workshop item are downloaded as rfcmp file in the steamCMD content folder. T
 - Click package
 - Click install
 - Click done
+
+# Create a steam item
+
+Based on this guide [Publishing to the Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=553110627).
+
+- In a folder copy the rfcm file of your mode
+- Create a text file with a vdf extension
+- Use the vdf body bellow
+
+```vdf
+"workshopitem"
+{
+	"appid"		"365960"
+	"publishedfileid"		"0"
+	"contentfolder"		"<CURRENTFOLDER_ABSOLUTE_PATH_HERE>\OutSteam\content"
+	"previewfile"		"<CURRENTFOLDER_ABSOLUTE_PATH_HERE>\OutSteam\preview.jpg"
+	"visibility"		"0"
+	"title"		"<TITLE_DISPLAYED_IN_STEAM>"
+	"description"		"<DESCRIPTION_OF_THE_ITEM_IN_STEAM>"
+	"changenote"		"<CHANGENOTE_OF_THE_ITEM_IN_STEAM>"
+}
+```
+Path have to be set in an absolute way to work. The OutSteam folder contains a content folder. The content folder contains the rfcmp file we created for the car.
+
+- Copy [uploadToSteam.ps1](./steam-publication-scripts/uploadToSteam.ps1) to the CURRENTFOLDER_ABSOLUTE_PATH
+- Replace the login and password parameters
+- Run the script
